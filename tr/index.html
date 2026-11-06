@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="tr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kumbu: Bütçe ve Harcama Takip</title>
+<meta name="description" content="Kumbu, konuşarak doldurduğun aylık bir bütçe. "Kahveye 85" de, doğru kaleme yazsın; maaşa kadar ne kaldığını gör.">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="alternate" hreflang="en" href="https://kumbu.approds.com/"><link rel="alternate" hreflang="tr" href="https://kumbu.approds.com/tr/">
+<style>@font-face{font-family:"Nunito";font-weight:400;font-display:swap;src:url("../assets/nunito-400.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:700;font-display:swap;src:url("../assets/nunito-700.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:800;font-display:swap;src:url("../assets/nunito-800.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:900;font-display:swap;src:url("../assets/nunito-900.woff") format("woff")}
+:root{--bg:#F2F6EE;--surface:#FFFFFF;--surface2:#E4ECDD;--text:#16261A;--text2:#4C5E50;--line:#D2DECB;
+--accent:#2E7A20;--press:#1F5715;--accent-soft:#DDEFD3;--accent-text:#286B1B;--on-accent:#FFFFFF;--coin:#F2B33D;--coin-ink:#3A2600;
+--band:#16261A;--band-card:#22372A;--band-text:#EDF5E9;--band-text2:#B4C6B3;--fixed:#7E8F80;--good:#17734A;--bad:#C42B2B;--signal:#9A5600;
+--k-body:#3E9A2C;--k-lid:#2B6E1E;--k-coin:#F2B33D;--k-coin-line:#C98A12;--k-ink:#16261A;--k-blush:#FF9DA8;
+--sans:"Nunito",ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1810;--surface:#162419;--surface2:#203224;--text:#EDF5E9;--text2:#B4C6B3;--line:#324736;
+--accent:#8ED46C;--press:#5E9E42;--accent-soft:#22391E;--accent-text:#A7E08A;--on-accent:#0E1810;--coin:#F7C35C;
+--band:#0A130C;--band-card:#1B2C1F;--fixed:#6F826F;--good:#5BC98F;--bad:#FF7A7A;--signal:#F2B45A;
+--k-body:#5DBA45;--k-lid:#3E8E2C;--k-coin:#F7C35C;--k-ink:#0E1810;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1810;--surface:#162419;--surface2:#203224;--text:#EDF5E9;--text2:#B4C6B3;--line:#324736;
+--accent:#8ED46C;--press:#5E9E42;--accent-soft:#22391E;--accent-text:#A7E08A;--on-accent:#0E1810;--coin:#F7C35C;
+--band:#0A130C;--band-card:#1B2C1F;--fixed:#6F826F;--good:#5BC98F;--bad:#FF7A7A;--signal:#F2B45A;
+--k-body:#5DBA45;--k-lid:#3E8E2C;--k-coin:#F7C35C;--k-ink:#0E1810;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.55 var(--sans)}
+a{color:var(--accent-text);font-weight:700}
+a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem;color:var(--text);text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:var(--surface2);color:var(--text);font:700 .875rem var(--sans);padding:8px 30px 8px 12px;border-radius:12px;cursor:pointer;
+background-image:linear-gradient(45deg,transparent 50%,var(--text2) 50%),linear-gradient(135deg,var(--text2) 50%,transparent 50%);background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:center;padding-block:28px 64px}
+.hero h1{font-size:clamp(2.375rem,6.2vw,4rem);font-weight:900;line-height:1.03;letter-spacing:-.025em;margin:0 0 18px}
+.hero .lead{font-size:1.1875rem;color:var(--text2);margin:0 0 26px;max-width:32em}
+.eyebrow{font-weight:800;color:var(--accent-text);margin:0 0 10px}
+.store{display:inline-block;background:var(--accent);color:var(--on-accent);padding:12px 24px 13px;border-radius:18px;font-weight:900;font-size:1.125rem;line-height:1.2;text-decoration:none;box-shadow:0 5px 0 var(--press)}
+.store small{display:block;font-weight:700;font-size:.8125rem;opacity:.9}
+.scene{justify-self:center;width:min(360px,100%);display:grid;gap:12px}
+.said{justify-self:end;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:1.125rem;padding:11px 18px;border-radius:20px 20px 4px 20px;display:flex;align-items:center;gap:10px}
+.said svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.kumbu-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:end}
+.kumbu-row svg.k{width:96px;height:96px}
+.reply{background:var(--surface);border-radius:20px 20px 20px 4px;padding:14px 16px;box-shadow:0 10px 26px rgba(22,38,26,.12);min-width:0}
+.reply p{margin:0 0 10px;font-weight:700;line-height:1.35}
+.env{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:.9375rem}
+.env b{font-weight:900;font-variant-numeric:tabular-nums}
+.env .bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--surface2);overflow:hidden}
+.env .bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.band{background:var(--band);color:var(--band-text)}
+.band .wrap{padding-block:56px 52px}
+.band h2{font-size:clamp(1.75rem,4.4vw,2.5rem);font-weight:900;line-height:1.1;margin:0 0 10px;letter-spacing:-.015em}
+.band .sub{color:var(--band-text2);font-size:1.125rem;margin:0 0 30px;max-width:36em}
+.split{display:flex;height:22px;border-radius:11px;overflow:hidden;gap:3px;margin:0 0 12px}
+.split i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 30px;color:var(--band-text2);font-weight:700;font-size:.9375rem}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.envs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.envs li{background:var(--band-card);border-radius:18px;padding:14px;min-width:0;display:grid;gap:6px}
+.envs .em{font-size:1.5rem;line-height:1}
+.envs .n{font-weight:800;font-size:.9375rem;line-height:1.25;overflow-wrap:anywhere}
+.envs b{font-weight:900;font-size:1.125rem;font-variant-numeric:tabular-nums}
+.band .aside{color:var(--band-text2);margin:26px 0 0}
+section.block{padding-block:56px 0}
+section.block h2{font-size:clamp(1.625rem,4vw,2.25rem);font-weight:900;line-height:1.12;letter-spacing:-.015em;margin:0 0 26px}
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 26px}
+.feat{min-width:0}
+.tile{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:12px;background:var(--accent-soft);color:var(--accent-text)}
+.tile svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:1.125rem;font-weight:800;line-height:1.25;margin:0 0 4px}
+.feat p{margin:0;color:var(--text2);font-size:1rem}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.plan{border-radius:22px;padding:22px 24px;background:var(--surface);min-width:0}
+.plan.pro{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.plan h3{font-size:1.25rem;font-weight:900;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.pill{font:900 .6875rem/1 var(--sans);letter-spacing:.04em;background:var(--coin);color:var(--coin-ink);padding:4px 6px;border-radius:6px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ticks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}
+.ticks svg{width:22px;height:22px;margin-top:2px;fill:none;stroke:var(--good);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ticks.no svg{stroke:var(--bad)}
+.after{color:var(--text2);margin:16px 0 0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.two>div{min-width:0}
+.two h3{font-size:1.125rem;font-weight:800;margin:0 0 10px}
+details{background:var(--surface);border-radius:16px;padding:14px 18px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:800}
+details p{margin:8px 0 0;color:var(--text2)}
+.doc{max-width:760px;padding-block:20px 48px}
+.doc h1{font-size:clamp(1.875rem,4.4vw,2.5rem);font-weight:900;line-height:1.12;margin:0 0 6px}
+.doc .meta{color:var(--text2);font-size:.875rem;margin:0 0 24px}
+.doc h2{font-size:1.1875rem;font-weight:800;margin:28px 0 6px}
+.doc p{margin:0 0 10px}
+.contact{background:var(--surface);border-radius:18px;padding:18px;margin:16px 0}
+.contact a{font-size:1.0625rem;overflow-wrap:anywhere}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:start;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:800;font-size:.875rem;color:var(--text2)}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-block:24px 40px;color:var(--text2);font-size:.875rem}
+footer nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}
+@media (max-width:860px){.envs{grid-template-columns:repeat(3,minmax(0,1fr))}.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.hero{grid-template-columns:1fr;padding-block:8px 44px}.scene{order:-1;width:min(340px,100%)}
+.envs{grid-template-columns:repeat(2,minmax(0,1fr))}.feats,.plans,.two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.said{animation:pop .35s ease-out .3s both}.reply{animation:pop .35s ease-out .9s both}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header class="top wrap"><a class="brand" href="../tr/index.html"><img src="../assets/icon.png" alt="" width="34" height="34">Kumbu</a><label class="lang"><select id="lang" aria-label="Dil"><option lang="en" value="../index.html">English</option><option lang="tr" value="../tr/index.html" selected>Türkçe</option></select></label></header><main>
+<div class="wrap">
+<section class="hero">
+<div>
+<p class="eyebrow">iPhone için aylık bütçe</p>
+<h1>Harcamanı söyle, Kumbu doğru kaleme yazsın.</h1>
+<p class="lead">Bütçen maaş gününden maaş gününe sayılır. Ne aldığını arkadaşına anlatır gibi söyle; o kalemde ne kaldığını ve maaşa kadar günde ne kadar harcayabileceğini gör.</p>
+<span class="store">Yakında<small>iPhone için App Store'da</small></span>
+</div>
+<div class="scene" aria-hidden="true"><div class="said"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5"/></svg>kahveye 85</div><div class="kumbu-row"><svg class="k" viewBox="0 0 120 120" ><ellipse cx="42" cy="111" rx="11" ry="6" fill="var(--k-lid)"/><ellipse cx="78" cy="111" rx="11" ry="6" fill="var(--k-lid)"/><rect x="16" y="30" width="88" height="80" rx="36" fill="var(--k-body)"/><rect x="30" y="22" width="60" height="16" rx="8" fill="var(--k-lid)"/><circle cx="60" cy="15" r="11" fill="var(--k-coin)" stroke="var(--k-coin-line)" stroke-width="2.5"/><path d="M60 9v12" stroke="var(--k-coin-line)" stroke-width="2.5" stroke-linecap="round"/><rect x="47" y="27" width="26" height="6" rx="3" fill="var(--k-ink)" opacity=".55"/><ellipse cx="44" cy="64" rx="5.5" ry="6.5" fill="var(--k-ink)"/><ellipse cx="76" cy="64" rx="5.5" ry="6.5" fill="var(--k-ink)"/><circle cx="46" cy="62" r="1.8" fill="#fff"/><circle cx="78" cy="62" r="1.8" fill="#fff"/><ellipse cx="34" cy="78" rx="7" ry="4.5" fill="var(--k-blush)" opacity=".6"/><ellipse cx="86" cy="78" rx="7" ry="4.5" fill="var(--k-blush)" opacity=".6"/><path d="M50 78q10 10 20 0" fill="none" stroke="var(--k-ink)" stroke-width="4.5" stroke-linecap="round"/></svg><div class="reply"><p>Yazdım. Kahve ve dışarıda için ₺1.240 kaldı, maaşa daha 10 gün var.</p><div class="env"><span>Kahve ve dışarıda</span><b>₺1.240</b><span class="bar"><i style="width:31%"></i></span></div></div></div></div>
+</section>
+</div>
+<section class="band" aria-labelledby="m-h"><div class="wrap">
+<h2 id="m-h">Ayını harcamadan önce böl</h2>
+<p class="sub">Kumbu her ay ne girdiğini ve ne çıktığını sorar. Önce kira, fatura ve abonelikler düşer, sonra birikim kenara konur, kalan para kalemlere bölünür.</p>
+<div class="split" role="img" aria-label="₺42.000 gelir: sabit ödemeler ₺14.200, birikim ₺2.800, harcama ₺25.000"><i style="flex:0.338;background:var(--fixed)"></i><i style="flex:0.067;background:var(--coin)"></i><i style="flex:0.595;background:var(--accent)"></i></div>
+<div class="legend"><span><i style="background:var(--fixed)"></i>Sabit ₺14.200</span><span><i style="background:var(--coin)"></i>Birikim ₺2.800</span><span><i style="background:var(--accent)"></i>Harcama ₺25.000</span></div>
+<ul class="envs" aria-label="Harcama kalemleri"><li><span class="em" aria-hidden="true">🛒</span><span class="n">Market</span><b>₺9.000</b></li><li><span class="em" aria-hidden="true">☕</span><span class="n">Kahve ve dışarıda</span><b>₺4.000</b></li><li><span class="em" aria-hidden="true">🚌</span><span class="n">Ulaşım</span><b>₺3.000</b></li><li><span class="em" aria-hidden="true">🎟</span><span class="n">Eğlence</span><b>₺2.500</b></li><li><span class="em" aria-hidden="true">📦</span><span class="n">Diğer</span><b>₺6.500</b></li></ul>
+<p class="aside">Maaşın ayda bir, iki haftada bir ya da ayda iki kez yatabilir: dönem her zaman bir sonraki maaş gününde biter.</p>
+</div></section>
+<div class="wrap">
+<section class="block" aria-labelledby="f-h"><h2 id="f-h">Neler yapar</h2><div class="feats"><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8.5" y="2.5" width="7" height="12" rx="3.5"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3.5M8.5 21.5h7"/></svg></div><h3>Konuş ya da yaz</h3><p>Mikrofona dokun, "market 340" ya da "dün akşam taksiye 180" de. Mikrofon yoksa aynı cümleyi yaz.</p></article><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><path d="M17 15l3 3-3 3"/></svg></div><h3>Bir cümlede birkaç harcama</h3><p>"Marketten 340, benzine 1.200" iki ayrı kayıt olur. Biri belirsizse Kumbu yalnızca onu sorar.</p></article><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></div><h3>Maaştan maaşa</h3><p>Bir sonraki maaşa kadar günde ne kadar harcayabileceğini ve kaç gün kaldığını gör.</p></article><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"/><path d="M18 3v4h-4M6 21v-4h4"/></svg></div><h3>Sabit ödemeler</h3><p>Kira, fatura, abonelik ve taksitleri bir kez gir. Fatura yüksek gelirse söyle, Kumbu farkı denkler.</p></article><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4h10M8 4v2a6 6 0 0 0-3 5.2V17a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4v-5.8A6 6 0 0 0 16 6V4"/><path d="M9.5 14h5"/></svg></div><h3>Birikim kavanozları</h3><p>Her hedefe bir kavanoz aç, parayı sesle at: "tatile 500 kenara koydum". Ay bitince artanı bir kavanoza taşı.</p></article><article class="feat"><div class="tile" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10.5" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div><h3>Hesap yok, banka girişi yok</h3><p>Kayıtların telefonunda durur. Kumbu banka bilgini hiç istemez.</p></article></div></section>
+<section class="block" aria-labelledby="p-h"><h2 id="p-h">Ücretsiz, uzun yol için Pro</h2>
+<div class="plans"><div class="plan"><h3>Ücretsiz</h3><ul class="ticks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sınırsız sesli ve yazılı kayıt</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>5 kalem ve 1 birikim kavanozu</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sabit ödemeler, 1 taksit geri sayımıyla</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bu dönem ve bir önceki</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sakin günlerde akşam hatırlatması</span></li></ul></div><div class="plan pro"><h3>Kumbu Pro <span class="pill">PRO</span></h3><ul class="ticks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Sınırsız kalem, kavanoz ve taksit</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Her ödemeden bir gün önce hatırlatma</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Güncel fiyatla altın ve döviz birikimi</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Artanı yeni aya devretme, kalemler arası para taşıma</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Tüm geçmiş, yıllık rapor ve CSV</span></li></ul></div></div>
+<p class="after">Pro, 3 günü ücretsiz yıllık plan ya da tek seferlik ömür boyu satın alma olarak sunulur. Deneme başlamadan önce ödeme ekranı ilk ödemenin tarihini gösterir.</p></section>
+<section class="block" aria-labelledby="h-h"><h2 id="h-h">Açık konuşalım</h2>
+<div class="two"><div><h3>Söz verdiklerimiz</h3><ul class="ticks"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Reklam yok, veri satışı yok</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Ses kaydı tutulmaz, yalnızca söylediğin cümlenin yazısı kalır</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span>Bütçen telefonunda durur</span></li></ul></div><div><h3>Ne değildir</h3><ul class="ticks no"><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Banka değil: hesaplarına bağlanmaz, para göndermez</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Finansal danışmanlık değil: yalnızca söylediklerini toplar</span></li><li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg><span>Henüz iPad ya da Android sürümü yok</span></li></ul></div></div></section>
+<section class="block" aria-labelledby="q-h"><h2 id="q-h">Sorular</h2><details><summary>İnternetsiz çalışır mı?</summary><p>Evet. Kayıtlar telefonunda tutulur. Dilin destekliyorsa ses telefonun içinde yazıya çevrilir, desteklemiyorsa bunu Apple'ın sunucuları yapar. Altın ve döviz fiyatları için bağlantı gerekir.</p></details><details><summary>Hangi dilleri anlıyor?</summary><p>Türkçe, İngilizce, Almanca, Fransızca, İspanyolca, İtalyanca, Felemenkçe, Portekizce ve Japonca. Uygulama iPhone'unun dilini izler.</p></details><details><summary>Ücretsiz deneme bitince ne olur?</summary><p>Deneme bitmeden en az 24 saat önce iptal etmezsen, başlamadan önce gösterilen tarihte yıllık ücret alınır. iPhone Ayarları'nda adına, sonra Abonelikler'e dokunarak iptal edebilirsin.</p></details><details><summary>Verilerimi yeni telefona taşıyabilir miyim?</summary><p>Kayıtların iPhone yedeğinin parçasıdır. Pro'da her şeyi CSV dosyası olarak da dışa aktarabilirsin.</p></details></section>
+</div>
+</main><footer><div class="wrap"><nav aria-label="Legal"><a href="../tr/privacy.html">Gizlilik</a><a href="../tr/terms.html">Şartlar</a><a href="../tr/support.html">Destek</a><a href="../tr/kvkk.html">KVKK</a><a href="../tr/licenses.html">Lisanslar</a></nav><div>© 2026 Berk Sancak · approds</div></div></footer><script>
+(function(){
+  var s=document.getElementById('lang');
+  if(s)s.addEventListener('change',function(){try{localStorage.setItem('lang',s.options[s.selectedIndex].lang)}catch(e){}location.href=s.value});
+})();
+</script>
+</body>
+</html>

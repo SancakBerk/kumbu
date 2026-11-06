@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Licenses · Kumbu</title>
+<meta name="description" content="Fonts and open-source software used in Kumbu.">
+<link rel="icon" href="assets/favicon.png">
+<link rel="alternate" hreflang="en" href="https://kumbu.approds.com/licenses"><link rel="alternate" hreflang="tr" href="https://kumbu.approds.com/tr/licenses">
+<style>@font-face{font-family:"Nunito";font-weight:400;font-display:swap;src:url("assets/nunito-400.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:700;font-display:swap;src:url("assets/nunito-700.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:800;font-display:swap;src:url("assets/nunito-800.woff") format("woff")}@font-face{font-family:"Nunito";font-weight:900;font-display:swap;src:url("assets/nunito-900.woff") format("woff")}
+:root{--bg:#F2F6EE;--surface:#FFFFFF;--surface2:#E4ECDD;--text:#16261A;--text2:#4C5E50;--line:#D2DECB;
+--accent:#2E7A20;--press:#1F5715;--accent-soft:#DDEFD3;--accent-text:#286B1B;--on-accent:#FFFFFF;--coin:#F2B33D;--coin-ink:#3A2600;
+--band:#16261A;--band-card:#22372A;--band-text:#EDF5E9;--band-text2:#B4C6B3;--fixed:#7E8F80;--good:#17734A;--bad:#C42B2B;--signal:#9A5600;
+--k-body:#3E9A2C;--k-lid:#2B6E1E;--k-coin:#F2B33D;--k-coin-line:#C98A12;--k-ink:#16261A;--k-blush:#FF9DA8;
+--sans:"Nunito",ui-rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1810;--surface:#162419;--surface2:#203224;--text:#EDF5E9;--text2:#B4C6B3;--line:#324736;
+--accent:#8ED46C;--press:#5E9E42;--accent-soft:#22391E;--accent-text:#A7E08A;--on-accent:#0E1810;--coin:#F7C35C;
+--band:#0A130C;--band-card:#1B2C1F;--fixed:#6F826F;--good:#5BC98F;--bad:#FF7A7A;--signal:#F2B45A;
+--k-body:#5DBA45;--k-lid:#3E8E2C;--k-coin:#F7C35C;--k-ink:#0E1810;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1810;--surface:#162419;--surface2:#203224;--text:#EDF5E9;--text2:#B4C6B3;--line:#324736;
+--accent:#8ED46C;--press:#5E9E42;--accent-soft:#22391E;--accent-text:#A7E08A;--on-accent:#0E1810;--coin:#F7C35C;
+--band:#0A130C;--band-card:#1B2C1F;--fixed:#6F826F;--good:#5BC98F;--bad:#FF7A7A;--signal:#F2B45A;
+--k-body:#5DBA45;--k-lid:#3E8E2C;--k-coin:#F7C35C;--k-ink:#0E1810;color-scheme:dark}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.0625rem/1.55 var(--sans)}
+a{color:var(--accent-text);font-weight:700}
+a:focus-visible,select:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+header.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem;color:var(--text);text-decoration:none}
+.brand img{width:34px;height:34px;border-radius:9px}
+.lang select{appearance:none;-webkit-appearance:none;border:0;background:var(--surface2);color:var(--text);font:700 .875rem var(--sans);padding:8px 30px 8px 12px;border-radius:12px;cursor:pointer;
+background-image:linear-gradient(45deg,transparent 50%,var(--text2) 50%),linear-gradient(135deg,var(--text2) 50%,transparent 50%);background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;background-size:5px 5px;background-repeat:no-repeat}
+.hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:36px;align-items:center;padding-block:28px 64px}
+.hero h1{font-size:clamp(2.375rem,6.2vw,4rem);font-weight:900;line-height:1.03;letter-spacing:-.025em;margin:0 0 18px}
+.hero .lead{font-size:1.1875rem;color:var(--text2);margin:0 0 26px;max-width:32em}
+.eyebrow{font-weight:800;color:var(--accent-text);margin:0 0 10px}
+.store{display:inline-block;background:var(--accent);color:var(--on-accent);padding:12px 24px 13px;border-radius:18px;font-weight:900;font-size:1.125rem;line-height:1.2;text-decoration:none;box-shadow:0 5px 0 var(--press)}
+.store small{display:block;font-weight:700;font-size:.8125rem;opacity:.9}
+.scene{justify-self:center;width:min(360px,100%);display:grid;gap:12px}
+.said{justify-self:end;background:var(--accent);color:var(--on-accent);font-weight:800;font-size:1.125rem;padding:11px 18px;border-radius:20px 20px 4px 20px;display:flex;align-items:center;gap:10px}
+.said svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.kumbu-row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:end}
+.kumbu-row svg.k{width:96px;height:96px}
+.reply{background:var(--surface);border-radius:20px 20px 20px 4px;padding:14px 16px;box-shadow:0 10px 26px rgba(22,38,26,.12);min-width:0}
+.reply p{margin:0 0 10px;font-weight:700;line-height:1.35}
+.env{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;font-size:.9375rem}
+.env b{font-weight:900;font-variant-numeric:tabular-nums}
+.env .bar{grid-column:1/-1;height:8px;border-radius:4px;background:var(--surface2);overflow:hidden}
+.env .bar i{display:block;height:100%;background:var(--accent);border-radius:4px}
+.band{background:var(--band);color:var(--band-text)}
+.band .wrap{padding-block:56px 52px}
+.band h2{font-size:clamp(1.75rem,4.4vw,2.5rem);font-weight:900;line-height:1.1;margin:0 0 10px;letter-spacing:-.015em}
+.band .sub{color:var(--band-text2);font-size:1.125rem;margin:0 0 30px;max-width:36em}
+.split{display:flex;height:22px;border-radius:11px;overflow:hidden;gap:3px;margin:0 0 12px}
+.split i{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:0 0 30px;color:var(--band-text2);font-weight:700;font-size:.9375rem}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:12px;height:12px;border-radius:4px;display:inline-block}
+.envs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.envs li{background:var(--band-card);border-radius:18px;padding:14px;min-width:0;display:grid;gap:6px}
+.envs .em{font-size:1.5rem;line-height:1}
+.envs .n{font-weight:800;font-size:.9375rem;line-height:1.25;overflow-wrap:anywhere}
+.envs b{font-weight:900;font-size:1.125rem;font-variant-numeric:tabular-nums}
+.band .aside{color:var(--band-text2);margin:26px 0 0}
+section.block{padding-block:56px 0}
+section.block h2{font-size:clamp(1.625rem,4vw,2.25rem);font-weight:900;line-height:1.12;letter-spacing:-.015em;margin:0 0 26px}
+.feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 26px}
+.feat{min-width:0}
+.tile{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:12px;background:var(--accent-soft);color:var(--accent-text)}
+.tile svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.feat h3{font-size:1.125rem;font-weight:800;line-height:1.25;margin:0 0 4px}
+.feat p{margin:0;color:var(--text2);font-size:1rem}
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.plan{border-radius:22px;padding:22px 24px;background:var(--surface);min-width:0}
+.plan.pro{background:var(--accent-soft);box-shadow:inset 0 0 0 2px var(--accent)}
+.plan h3{font-size:1.25rem;font-weight:900;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.pill{font:900 .6875rem/1 var(--sans);letter-spacing:.04em;background:var(--coin);color:var(--coin-ink);padding:4px 6px;border-radius:6px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ticks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;align-items:start}
+.ticks svg{width:22px;height:22px;margin-top:2px;fill:none;stroke:var(--good);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.ticks.no svg{stroke:var(--bad)}
+.after{color:var(--text2);margin:16px 0 0}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:30px}
+.two>div{min-width:0}
+.two h3{font-size:1.125rem;font-weight:800;margin:0 0 10px}
+details{background:var(--surface);border-radius:16px;padding:14px 18px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:800}
+details p{margin:8px 0 0;color:var(--text2)}
+.doc{max-width:760px;padding-block:20px 48px}
+.doc h1{font-size:clamp(1.875rem,4.4vw,2.5rem);font-weight:900;line-height:1.12;margin:0 0 6px}
+.doc .meta{color:var(--text2);font-size:.875rem;margin:0 0 24px}
+.doc h2{font-size:1.1875rem;font-weight:800;margin:28px 0 6px}
+.doc p{margin:0 0 10px}
+.contact{background:var(--surface);border-radius:18px;padding:18px;margin:16px 0}
+.contact a{font-size:1.0625rem;overflow-wrap:anywhere}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:start;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:800;font-size:.875rem;color:var(--text2)}
+footer{margin-top:64px;border-top:1px solid var(--line);padding-block:24px 40px;color:var(--text2);font-size:.875rem}
+footer nav{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}
+@media (max-width:860px){.envs{grid-template-columns:repeat(3,minmax(0,1fr))}.feats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.hero{grid-template-columns:1fr;padding-block:8px 44px}.scene{order:-1;width:min(340px,100%)}
+.envs{grid-template-columns:repeat(2,minmax(0,1fr))}.feats,.plans,.two{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.said{animation:pop .35s ease-out .3s both}.reply{animation:pop .35s ease-out .9s both}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:none}}}
+</style>
+</head>
+<body>
+<header class="top wrap"><a class="brand" href="index.html"><img src="assets/icon.png" alt="" width="34" height="34">Kumbu</a><label class="lang"><select id="lang" aria-label="Language"><option lang="en" value="licenses.html" selected>English</option><option lang="tr" value="tr/licenses.html">Türkçe</option></select></label></header><main><div class="wrap doc"><article><h1>Licenses</h1><p class="meta">Kumbu: Envelope Budget Planner · Updated November 6, 2026 · Berk Sancak</p><p>Kumbu is built with the fonts and open-source software below.</p><div class="tablewrap"><table><thead><tr><th>Name</th><th>Used for</th><th>License</th></tr></thead><tbody><tr><td>Nunito</td><td>The app's typeface</td><td>SIL Open Font License 1.1</td></tr><tr><td>Flutter</td><td>The app framework</td><td>BSD 3-Clause and others</td></tr><tr><td>Firebase iOS SDK</td><td>Usage analytics</td><td>Apache License 2.0</td></tr><tr><td>RevenueCat Purchases</td><td>Pro purchases</td><td>MIT</td></tr><tr><td>Other Flutter packages</td><td>Storage, sharing, notifications and dates</td><td>BSD 3-Clause, MIT</td></tr></tbody></table></div><p>Full license texts: <a href="assets/licenses.txt">licenses.txt</a> · Nunito: <a href="assets/OFL.txt">OFL.txt</a></p></article></div></main><footer><div class="wrap"><nav aria-label="Legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="support.html">Support</a><a href="kvkk.html">KVKK</a><a href="licenses.html">Licenses</a></nav><div>© 2026 Berk Sancak · approds</div></div></footer><script>
+(function(){
+  var s=document.getElementById('lang');
+  if(s)s.addEventListener('change',function(){try{localStorage.setItem('lang',s.options[s.selectedIndex].lang)}catch(e){}location.href=s.value});
+})();
+</script>
+</body>
+</html>
